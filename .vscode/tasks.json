@@ -1,0 +1,71 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build SASS",
+            "type": "shell",
+            "command": "sass",
+            "windows": {
+                "args": ["scss/index.scss", "contents/site.css", "--no-source-map", "--watch"]
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            }
+        },
+        {
+            "label": "Build Typescript",
+            "type": "typescript",
+            "tsconfig": "tsconfig.json",
+            //"option": "watch",
+            "problemMatcher": [
+                "$tsc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Watch Typescript",
+            "type": "shell",
+            "command": "node",
+            "windows": {
+                "args": ["C:\\Program Files (x86)\\Microsoft SDKs\\TypeScript\\3.4\\tsc.js", "C:\\Users\\KDJ\\Documents\\My Web Sites\\vue-base-project\\tsconfig.json", "--watch"]
+            },
+            "group": "none",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            }
+        },
+        {
+            "label": "Run IIS Express",
+            "type": "process",
+            "command": "C:\\Program Files (x86)\\IIS Express\\iisexpress.exe",
+            "windows": {
+                "args": ["/config:.vscode\\applicationhost.config", "/systray:true", "/siteid:2"]
+            },
+            "group": "none",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            }
+        }
+    ]
+}
