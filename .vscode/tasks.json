@@ -38,7 +38,7 @@
             "type": "shell",
             "command": "node",
             "windows": {
-                "args": ["C:\\Program Files (x86)\\Microsoft SDKs\\TypeScript\\3.4\\tsc.js", "C:\\Users\\KDJ\\Documents\\My Web Sites\\vue-base-project\\tsconfig.json", "--watch"]
+                "args": ["C:\\Program Files (x86)\\Microsoft SDKs\\TypeScript\\3.4\\tsc.js", "--watch", "tsconfig.json"]
             },
             "group": "none",
             "presentation": {
