@@ -1,0 +1,11 @@
+$backdrop: green;
+
+.loading {
+    background-color: $backdrop;
+    z-index: 1001;
+
+    span {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

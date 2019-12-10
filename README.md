@@ -1,76 +1,81 @@
-# VueJS Base Template
+# Vue Boilerplate Template with TypeScript and Rollup
 Basic template for building VueJS web app with Typescript.
 
-Since my company blocks NPM and Node.js is **not** on the approved software list. This is my attempt to build a Vue project with a strong TypeScript background verus Webpack and other build frameworks.
+## Why?
+Basically, I feel that many other front-end projects rely on so many different tools to get a simple job done. Goal here is reduce the over-head to the necessary tools to develop and bundle an application using the things I love; `ES6 modules`, `Typescript`, `Vue JS`, and `Rollup JS`.
 
-## Technology Used:
+## Installation & Setup
 
-* Microsoft Typescript
-* RequireJs - for Javscript AMD modules loading, since Webpack and Vue-Loader is __not__ an option
-* Axios - HTTP request
-* Vuejs, VueRouter, Vuex (State Management)
-* IIS Express - backend server stuff
+> NOTE: You may get a TSC compile error after running `npm run tsc`. Please see `VUEX Strong Typings` section in this document. 
 
-Goal of this project, is to build a web application using popular Vuejs front-end framework without NodeJs. I appreciate what NodeJs does for the Javascript world. However, not a fan of CommonJs modules and Webpack gets complex fast. Not to mention that node_modules like a endless pit :-) In the end, hopefully to have a working application with collections of re-useable components.
-
-
-## Building Project
-### SCSS
-Setup SASS environment, details here https://sass-lang.com/install
-
- Example using *_Install Anywhere (Standalone)_*
-
-    > sass index.scss ../Content/site.css --no-source-map
-
-(optional file watcher)
-
-    > sass index.scss ../Content/site.css --watch
-
-Compress /  Minified
-
-    > sass index.scss ../Content/site.min.css -s compressed
-
----
-### Typescript
-This project uses Javascript AMD module to load dependency. Require.JS is used for AMD module loading on the client-side. Typescript is used to compile/bundle TS modules into a single JS file.
-
-To build JS output file from Typescript:
-
-    tsc <MyWorkspace>\<PathToTSConfig>\tsconfig.json
-
-Optional, Node file watcher:
-
-	node "C:\Program Files (x86)\Microsoft SDKs\TypeScript\3.4\tsc.js" --watch -p "<MyWorkspace>\<PathToTSConfig>\tsconfig.json"
-
----
-#### Project/Folder Structure
-* SCSS - this folder stores the CSS related files that compiles into `contents/site.css`.
-* Typescripts - this folder is where the modules are broken up into area domains. During a build, all TS files are complied into a single JS output file under the `scripts` folder. (see tsconfig.json)
-
----
-## Production Builds
-* Update any configurations under typescript -> store -> modules -> configuration.ts
-* (optional) Rename main.js / main.js.map to reflex configuration version: EX: main-1.0.js
-    * > _NOTE: this assist in cache busting and force browser to reload assets._
-* Open index.html 
-	* Remove urlArgs settings from require config. 
-	* (optional) Update path "main": "main-1.0" to match renamed main.js from step above
-	* RequireJS config: change *"vue": "vue"* to _"vue": "vue.min"_ 
-
-### Excluding Files and Folders - Visual Studio
-During the publish process via Visual Studio, severals files and folders are inculded in the WebDeploy package. To remove these unwanted items, edit the `website.publishproj` file.
-Under the second set of `<PropertyGroup>`, add the following snippet.
-
-```xml
-<PropertyGroup>
-	...
-
-    <ExcludeFoldersFromDeployment>
-      scss;typings;.vscode;
-    </ExcludeFoldersFromDeployment>
-
-    <ExcludeFilesFromDeployment>
-      packages.config;Readme.md;tsconfig.json;
-    </ExcludeFilesFromDeployment>
-</PropertyGroup>
 ```
+:: installs application dependencies
+npm install
+
+:: runs all TS code through Typescript
+npm run tsc
+
+:: Bundle TS to JS and SCSS to CSS
+npm run rollup
+```
+
+## Vuex Strong Typings:
+
+This project contains a custom Store State interface to assist with strong-typing through-out the entire application.
+
+> **MUST** disable the VUEX typings within the node_modules folder before using.
+
+Navigate to `node_modules/vuex/types/vue.d.ts`. Open and comment out the entire document. Then save and close.
+This will allow Vue to use the our custom Vuex $store types. File can be modified here: `./typings/app.d.ts`.
+
+
+## Writing Vue Component Modules
+As you may know, there are many ways to write components within Vue JS. Below will discuss few of the ways that is supported using Typescript.
+
+*Pure Typescript module*  
+This is the most straight-forward way to create Vue components using Typescript.  
+See `src\views\not-found.ts` for full example.
+
+* PROs
+    * Uses *.ts file extensions
+    * No conversion to Typescript from another module style
+    * Uses Vue's standard mixin object
+* CONs
+    * template embeded into string literal
+        * string can be parse into HTML via extension
+    * Weak strong typings withpit cast objects and use Interfaces
+    * All styles must either in-line or in a global CSS file
+
+*Vue Component via Standard Vue Mixin*  
+This module using Vue's single component model where code is split into 3 parts; Template, Script, & Style.  
+See `src\views\Home.vue` or `src\components\Avatar.vue` for full example.
+
+> Script section continue to use Vue's standard mixin object.
+
+* PROs
+    * Uses Vue's single component file
+    * Easying edit template as HTML code
+* CONs
+    * Must convert Vue's single component to TS equivalent
+    * Weak strong typings without cast objects and use Interfaces
+
+*Vue Component via Vue-Property-Decorator*  
+This module using Vue's single component model where code is split into 3 parts; Template, Script, & Style.  
+See `src\views\App.vue` or `src\components\About.vue` for full example.
+
+> Script section uses vue-property-decorator.
+
+* PROs
+    * Uses Vue's single component file
+    * Easying edit template as HTML code
+    * Improved strong-typing on `this` keyword
+    * No need for extra interfaces to cast Vue's objects.
+* CONs
+    * Must convert Vue's single component to TS equivalent
+    * Bundle or reference external Javascript library
+
+## Contribute
+Feel free to use this for you any use, or provide feedback.
+
+## License
+MIT
