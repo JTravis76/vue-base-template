@@ -8,7 +8,7 @@
             "type": "shell",
             "command": "sass",
             "windows": {
-                "args": ["scss/index.scss", "contents/site.css", "--no-source-map", "--watch"]
+                "args": ["src/assets/scss/index.scss", "public/css/site.css", "--no-source-map", "--watch"]
             },
             "group": "build",
             "presentation": {
@@ -38,7 +38,7 @@
             "type": "shell",
             "command": "node",
             "windows": {
-                "args": ["C:\\Program Files (x86)\\Microsoft SDKs\\TypeScript\\3.4\\tsc.js", "--watch", "tsconfig.json"]
+                "args": ["C:\\Program Files (x86)\\Microsoft SDKs\\TypeScript\\3.6\\tsc.js", "--watch", "-p", "${workspaceFolder}\\tsconfig.json"]
             },
             "group": "none",
             "presentation": {
@@ -55,7 +55,8 @@
             "type": "process",
             "command": "C:\\Program Files (x86)\\IIS Express\\iisexpress.exe",
             "windows": {
-                "args": ["/config:.vscode\\applicationhost.config", "/systray:true", "/siteid:2"]
+                //"args": ["/config:${wrokspaceFolder}\\.vscode\\applicationhost.config", "/systray:true", "/siteid:1"]
+                "args": ["/path:${workspaceFolder}\\public", "/port:8080", "/systray:true"]
             },
             "group": "none",
             "presentation": {
@@ -65,6 +66,18 @@
                 "panel": "shared",
                 "showReuseMessage": true,
                 "clear": false
+            }
+        },
+        {
+            "label": "Rollup",
+            "type": "shell",
+            "command": "rollup",
+            "windows": {
+                "args": ["-c", "--watch"]
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
             }
         }
     ]
