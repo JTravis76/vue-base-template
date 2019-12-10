@@ -15,7 +15,9 @@ export default {
         }
     },
     plugins: [
-        vue(),
+        vue(null, {
+            output: "./public/css/vue-bundle.css"
+        }),
         scss({
             output: "./public/css/site.css"
         })
