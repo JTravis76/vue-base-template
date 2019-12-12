@@ -12,7 +12,7 @@
   "devDependencies": {
     "vue-property-decorator": "^8.3.0",
     "rollup-plugin-scss": "^1.0.2",
-    "rollup-plugin-ts-vue": "^1.0.0",
+    "rollup-plugin-ts-vue": "^0.2.0",
     "tslib": "^1.10.0",
     "typescript": "^3.7.2"
   },
