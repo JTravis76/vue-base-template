@@ -22,10 +22,19 @@
     } as ComponentOptions<any>
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 $myColor: green;
 
-.home > p> a {
+.home > p > a {
     color: $myColor;
+}
+
+h1 {
+    text-decoration: underline;
+    color:darkorange;
+}
+
+p {
+    font-weight: bolder;
 }
 </style>

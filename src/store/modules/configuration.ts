@@ -8,6 +8,7 @@ export default {
         Description: "Basic Vue SPA startup application with Typescript and Rollup",
         BaseURL: "http://localhost:56077/",
         Version: "0.0.0.0",
+        VersionDate: "2020-01-01T00:00:00Z",
         Enviroment: "== LOCAL == LOCAL == LOCAL =="
     },
     getters: {
@@ -22,5 +23,6 @@ export interface IConfigState {
     Description: string;
     BaseURL: string;
     Version: string;
+    VersionDate: string;
     Enviroment: string;
 }

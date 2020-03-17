@@ -17,7 +17,7 @@ export default new Vuex.Store<IRootState>({
 });
 
 export interface IRootState {
-    ///**local state member */
+    /**local state member */
     pageLoading: boolean;  
 
     /**imported store module */

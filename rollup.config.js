@@ -1,3 +1,4 @@
+import resolve from "./node_modules/@rollup/plugin-node-resolve/dist/index.es";
 import vue from "./node_modules/rollup-plugin-ts-vue/dist/rollup-plugin-ts-vue.es";
 import scss from "./node_modules/rollup-plugin-scss/index.es";
 
@@ -6,21 +7,30 @@ export default {
     output: {
         name: "app",
         format: "iife",
-        file: "./public/js/app.js",
+        file: "./dist/js/app.js",
         globals: {
             "vue": "Vue",
             "vue-router": "VueRouter",
             "vuex": "Vuex",
-            "vue-class-component": "VueClassComponent"
-        }
+            "vue-class-component": "VueClassComponent",
+            "vue-property-decorator": "VueClassComponent"
+        },
+        sourcemap: false,
+        sourcemapFile: "./dist/js/app.js.map"
     },
     plugins: [
+        resolve(),
         vue(null, {
-            output: "./public/css/vue-bundle.css"
+            output: "./dist/css/vue-bundle.css"
         }),
         scss({
-            output: "./public/css/site.css"
+            output: "./dist/css/site.css"
         })
     ],
-    external: ["vue", "vue-router", "vuex", "vue-class-component"] //<- supress warnings
+    external: [
+        "vue", 
+        "vue-router", 
+        "vuex", 
+        "vue-class-component"
+    ]
 }

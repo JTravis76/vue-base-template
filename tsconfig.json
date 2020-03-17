@@ -4,28 +4,24 @@
     "noEmitOnError": true,
     "removeComments": true,
     "sourceMap": false,
-    "target": "es5",
-    "module": "es2015",
-    "noEmit": true,
-    "allowSyntheticDefaultImports": true,
+    "module": "ESNEXT",
+    "target": "ES5",
+    "moduleResolution": "node",
     "baseUrl": ".",
     "paths": {
-      "@/*": [ "src/*" ],
-      "~/*": [ "node_modules/*" ],
-      "vue": [ "node_modules/vue/types/index"],
-      "vue-router": [ "node_modules/vue-router/types/index"],
-      "vuex": [ "node_modules/vuex/types/index"],
-      "vue-class-component": [ "node_modules/vue-class-component/lib/index" ]
+      "@/*": [ "src/*" ]
     },
-    "experimentalDecorators": true
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "noEmit": true
   },
   "compileOnSave": false,
   "include": [
     "src/**/*.ts",
+    "src/**/*.vue",
     "typings/**/*.ts"
   ],
   "exclude": [
-    "node_modules",
-    "wwwroot"
+    "node_modules"
   ]
 }

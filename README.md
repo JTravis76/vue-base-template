@@ -16,7 +16,7 @@ npm install
 npm run tsc
 
 :: Bundle TS to JS and SCSS to CSS
-npm run rollup
+npm run build
 ```
 
 ## Vuex Strong Typings:
