@@ -26,7 +26,7 @@ This project contains a custom Store State interface to assist with strong-typin
 > **MUST** disable the VUEX typings within the node_modules folder before using.
 
 Navigate to `node_modules/vuex/types/vue.d.ts`. Open and comment out the entire document. Then save and close.
-This will allow Vue to use the our custom Vuex $store types. File can be modified here: `./typings/app.d.ts`.
+This will allow Vue to use the our custom Vuex $store types. That file can be modified/updated here: `./typings/app.d.ts`.
 
 
 ## Writing Vue Component Modules
@@ -40,6 +40,7 @@ See `src\views\not-found.ts` for full example.
     * Uses *.ts file extensions
     * No conversion to Typescript from another module style
     * Uses Vue's standard mixin object
+    * Sourcemaps works great in Visual Studio or browser debugger
 * CONs
     * template embeded into string literal
         * string can be parse into HTML via extension
@@ -58,6 +59,7 @@ See `src\views\Home.vue` or `src\components\Avatar.vue` for full example.
 * CONs
     * Must convert Vue's single component to TS equivalent
     * Weak strong typings without cast objects and use Interfaces
+    * Sourcemap line index is out-of-sync in debugger
 
 *Vue Component via Vue-Property-Decorator*  
 This module using Vue's single component model where code is split into 3 parts; Template, Script, & Style.  
@@ -73,6 +75,10 @@ See `src\views\App.vue` or `src\components\About.vue` for full example.
 * CONs
     * Must convert Vue's single component to TS equivalent
     * Bundle or reference external Javascript library
+    * Sourcemap line index is out-of-sync in debugger
+
+## Custom Vue Components
+Needed a place to store custom vue components I've used in many of my projects. Decided this would be the best place. Under the `src\components` directory is a collection of components. Many uses additional libraries, Vuex store, etc. Feel free to use. Documention is provide under the `docs` directory.
 
 ## Contribute
 Feel free to use this for you any use, or provide feedback.
