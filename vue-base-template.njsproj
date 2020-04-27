@@ -28,7 +28,7 @@
     <NodejsPort>1337</NodejsPort>
     <TypeScriptSourceMap>true</TypeScriptSourceMap>
     <TypeScriptModuleKind>CommonJS</TypeScriptModuleKind>
-    <TypeScriptToolsVersion>3.7</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>3.8</TypeScriptToolsVersion>
     <EnableTypeScript>true</EnableTypeScript>
     <StartWebBrowser>False</StartWebBrowser>
   </PropertyGroup>
@@ -48,11 +48,11 @@
     <Folder Include="docs\" />
     <Folder Include="src\" />
     <Folder Include="src\assets\" />
-    <Folder Include="src\assets\scss\" />
-    <Folder Include="src\assets\scss\toast-notification\" />
-    <Folder Include="src\assets\scss\toast-notification\default\" />
-    <Folder Include="src\assets\scss\toast-notification\sugar\" />
-    <Folder Include="src\assets\scss\toast-notification\sugar\icons\" />
+    <Folder Include="src\scss\" />
+    <Folder Include="src\scss\toast-notification\" />
+    <Folder Include="src\scss\toast-notification\default\" />
+    <Folder Include="src\scss\toast-notification\sugar\" />
+    <Folder Include="src\scss\toast-notification\sugar\icons\" />
     <Folder Include="src\components\" />
     <Folder Include="src\lib\" />
     <Folder Include="src\plugins\" />
@@ -105,20 +105,20 @@
     <Content Include="rollup.config.js" />
     <Content Include="server.js" />
     <Content Include="src\App.vue" />
-    <Content Include="src\assets\scss\toast-notification\default\index.scss" />
-    <Content Include="src\assets\scss\toast-notification\default\_main.scss" />
-    <Content Include="src\assets\scss\toast-notification\default\_variables.scss" />
-    <Content Include="src\assets\scss\toast-notification\sugar\icons.scss" />
-    <Content Include="src\assets\scss\toast-notification\sugar\icons\error.svg" />
-    <Content Include="src\assets\scss\toast-notification\sugar\icons\info.svg" />
-    <Content Include="src\assets\scss\toast-notification\sugar\icons\success.svg" />
-    <Content Include="src\assets\scss\toast-notification\sugar\icons\warning.svg" />
-    <Content Include="src\assets\scss\toast-notification\sugar\index.scss" />
-    <Content Include="src\assets\scss\toast-notification\sugar\_variables.scss" />
-    <Content Include="src\assets\scss\toast-notification\_animations.scss" />
-    <Content Include="src\assets\scss\_component-loading.scss" />
-    <Content Include="src\assets\scss\index.scss" />
-    <Content Include="src\assets\scss\_partial1.scss" />
+    <Content Include="src\scss\toast-notification\default\index.scss" />
+    <Content Include="src\scss\toast-notification\default\_main.scss" />
+    <Content Include="src\scss\toast-notification\default\_variables.scss" />
+    <Content Include="src\scss\toast-notification\sugar\icons.scss" />
+    <Content Include="src\scss\toast-notification\sugar\icons\error.svg" />
+    <Content Include="src\scss\toast-notification\sugar\icons\info.svg" />
+    <Content Include="src\scss\toast-notification\sugar\icons\success.svg" />
+    <Content Include="src\scss\toast-notification\sugar\icons\warning.svg" />
+    <Content Include="src\scss\toast-notification\sugar\index.scss" />
+    <Content Include="src\scss\toast-notification\sugar\_variables.scss" />
+    <Content Include="src\scss\toast-notification\_animations.scss" />
+    <Content Include="src\scss\_component-loading.scss" />
+    <Content Include="src\scss\index.scss" />
+    <Content Include="src\scss\_partial1.scss" />
     <Content Include="src\components\AddressBook.vue" />
     <Content Include="src\components\Avatar.vue" />
     <Content Include="src\components\ComposeMail.vue" />

@@ -1,6 +1,5 @@
 import resolve from "./node_modules/@rollup/plugin-node-resolve/dist/index.es";
 import vue from "./node_modules/rollup-plugin-ts-vue/dist/rollup-plugin-ts-vue.es";
-import scss from "./node_modules/rollup-plugin-scss/index.es";
 
 export default {
     input: "./src/main.ts",
@@ -21,9 +20,6 @@ export default {
     plugins: [
         resolve(),
         vue(null, {
-            output: "./dist/css/vue-bundle.css"
-        }),
-        scss({
             output: "./dist/css/site.css"
         })
     ],

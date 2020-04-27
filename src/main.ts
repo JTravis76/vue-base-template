@@ -4,7 +4,7 @@ import store from "@/store/index";
 import App from "@/App.vue";
 
 import "@/filters";
-import "./assets/scss/index.scss";
+import "./scss/index.scss";
 
 Vue.config.productionTip = false;
 

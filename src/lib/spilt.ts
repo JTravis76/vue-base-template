@@ -12,7 +12,7 @@ interface WindowEx extends Window {
 // maintainable code, while at the same time manually optimizing for tiny minified file size,
 // browser compatibility without additional requirements, graceful fallback (IE8 is supported)
 // and very few assumptions about the user's page layout.
-const global = window as WindowEx
+const global = window as unknown as WindowEx
 const { document } = global
 
 // Save a couple long function names that are used frequently.

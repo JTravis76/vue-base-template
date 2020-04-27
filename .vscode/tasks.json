@@ -56,7 +56,7 @@
             "command": "C:\\Program Files (x86)\\IIS Express\\iisexpress.exe",
             "windows": {
                 //"args": ["/config:${wrokspaceFolder}\\.vscode\\applicationhost.config", "/systray:true", "/siteid:1"]
-                "args": ["/path:${workspaceFolder}\\public", "/port:8080", "/systray:true"]
+                "args": ["/path:${workspaceFolder}\\dist", "/port:8080", "/systray:true"]
             },
             "group": "none",
             "presentation": {

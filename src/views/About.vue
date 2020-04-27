@@ -16,8 +16,8 @@
           <td>{{appVersion}} compiled on {{appVersionDate | shortDateTimeString}}</td> 
         </tr> 
         <tr> 
-          <td class="text-bold">NetCenter API</td> 
-          <td><a :href="$store.state.config.NetcenterBaseApi" target="_blank">{{$store.state.config.NetcenterBaseApi}}</a></td> 
+          <td class="text-bold">Base API</td> 
+          <td><a :href="$store.state.config.BaseApi" target="_blank">{{$store.state.config.BaseApi}}</a></td> 
         </tr> 
         <tr> 
           <td class="text-bold">API Base URL</td> 

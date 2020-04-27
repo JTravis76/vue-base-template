@@ -1,4 +1,4 @@
-type ToastType = "success" | "danger" | "default" | "info" | "warning";
+type ToastType = "success" | "error" | "default" | "info" | "warning";
 type ToastPosition = "top" | "bottom" | "top-right" | "bottom-right" | "top-left" | "bottom-left";
 
 interface ToastConstructor {

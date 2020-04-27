@@ -2,7 +2,7 @@ import { StoreOptions } from "vuex";
 
 export default {
     state: {
-        NetcenterBaseApi: "http://netcenterapidev/",
+        BaseApi: "http://apidev/",
         AppName: "VueApp",
         FullAppName: "Vue Application",
         Description: "Basic Vue SPA startup application with Typescript and Rollup",
@@ -17,7 +17,7 @@ export default {
 } as StoreOptions<any>
 
 export interface IConfigState {
-    NetcenterBaseApi: string;
+    BaseApi: string;
     AppName: string;
     FullAppName: string;
     Description: string;

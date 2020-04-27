@@ -12,7 +12,7 @@
                             <div class="row">
                                 <div class="col-lg-8">
                                     <div style="margin-left:10px;">
-                                        <pagination TargetId="div-pager" v-bind:PageIndex="page" v-bind:TotalPages="pagecount" v-on:callback="OnPaginate($event)"></pagination>
+                                        <pagination :pageIndex="page" :totalPages="pagecount" v-on:callback="OnPaginate($event)"></pagination>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
