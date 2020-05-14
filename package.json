@@ -8,23 +8,24 @@
     "vue": "^2.6.11",
     "vue-class-component": "^7.2.3",
     "vue-router": "^3.1.6",
-    "vuex": "^3.1.3"
+    "vuex": "^3.4.0"
   },
   "devDependencies": {
-    "@rollup/plugin-node-resolve": "^7.1.1",
-    "express": "4.17.1",
-    "rollup": "^1.27.13",
-    "rollup-plugin-ts-vue": "^0.3.0",
-    "sass": "^1.26.3",
-    "tslib": "^1.11.1",
-    "typescript": "^3.7.2",
-    "vue-property-decorator": "^8.4.1"
+    "@rollup/plugin-node-resolve": "^7.1.3",
+    "rollup": "^2.10.0",
+    "rollup-plugin-ts-vue": "^0.4.0",
+    "sass": "^1.26.5",
+    "tslib": "^2.0.0",
+    "typescript": "^3.9.2",
+    "vue-property-decorator": "^8.4.2"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "flush":"node no-vuex-store.js",
     "tsc": "tsc --build",
-    "build": "npm run tsc && rollup -c",
-    "watch": "rollup -c --watch"
+    "build": "npm run flush && tsc && rollup -c",
+    "watch": "rollup -c --watch",
+    "serve": "node server.js"
   },
   "keywords": [],
   "author": "Jeremy Travis",

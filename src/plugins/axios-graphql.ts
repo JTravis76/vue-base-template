@@ -107,7 +107,9 @@ function gql(query:GraphQlQuery = null) {
 
         axios(config)
             .then(resp => {
-                resolve(resp.data);
+                //Get property name, then return just that object
+                let root = Object.getOwnPropertyNames(resp.data.data)[0];
+                resolve(resp.data.data[root]);
             })
             .catch(err => {
                 reject(err);
@@ -121,7 +123,7 @@ function gql(query:GraphQlQuery = null) {
 //         * GraphQL Query Fetcher
 //         * @param query GraphQL query
 //         */
-//         $graphql(query: GraphQlQuery): Promise<GraphQLResult>;
+//         $graphql<T = any>(query: GraphQlQuery): Promise<T>; //Promise<GraphQLResult<T>>;
 //     }
 // }
 
@@ -131,7 +133,7 @@ export interface GraphQlQuery {
     operationName: string;
 }
 
-export type GraphQLResult = {
+export type GraphQLResult<T> = {
     errors: any[];
-    data: any;
+    data: T;
 }

@@ -58,6 +58,7 @@ $loader-height: auto; //368px
         background-color: transparent;
         border: 0px;
         color:rgba(0,0,25,0.2);
+        cursor: pointer;
     }
 
     div.loading-wrapper {

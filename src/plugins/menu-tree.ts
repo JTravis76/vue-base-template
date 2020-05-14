@@ -1,5 +1,6 @@
-﻿import { live, fadeIn, fadeOut, parents, isVisible, hasClass } from "@/lib/jquery-native"
-import { VueConstructor } from "vue";
+﻿import { VueConstructor } from "vue";
+import { live, fadeIn, fadeOut, isVisible, hasClass } from "@/lib/jquery-native";
+import { find } from "@/lib/traverse";
 
 export default {
     install(vue: VueConstructor, name = "$menuTree") {
@@ -23,13 +24,13 @@ function tree() {
             //Check if the next element is a menu and is visible
             if (checkElement.classList.contains(options.submenuSelector) && isVisible(checkElement as HTMLElement) && !hasClass(document.getElementsByTagName("body")[0], "sidebar-collapse")) {
                 fadeOut(checkElement, options.animationSpeed);
-                let parent_li = parents(checkElement as HTMLElement, "li");
+                let parent_li = find(checkElement as HTMLElement, "li");
                 parent_li.classList.toggle(options.menuCssClass);
             }
             //If the menu is not visible
             else if (checkElement.classList.contains(options.submenuSelector) && !isVisible(checkElement as HTMLElement)) {
                 //Get the parent menu
-                let parent = parents(_self, "ul");
+                let parent = find(_self, "ul");
                 //get all sub-menus
                 let ul = parent.querySelectorAll("ul");
 
@@ -45,7 +46,7 @@ function tree() {
 
                 //Open the target menu and add the menu-open class
                 fadeIn(checkElement, options.animationSpeed);
-                let parent_li = parents(_self, "li");
+                let parent_li = find(_self, "li");
                 parent_li.className += " " + options.menuCssClass;
             }
             //if this isn't a link, prevent the page from being redirected

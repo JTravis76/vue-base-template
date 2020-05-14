@@ -2,19 +2,7 @@
 
 Here are a few themes converted to use VueJs that was used in some of my projects.
 
-## AdminLTE
-This template is based on the popular admin dashboard [AdminLTE](https://github.com/ColorlibHQ/AdminLTE).
-
-> NOTE: this theme uses Bootstrap 3.3.7
-
-In your `index.scss` file, add the following:
-
-```scss
-@import "bootstrap-3.3.7/bootstrap.scss";
-@import "font-awesome-4.7.0/font-awesome.scss";
-@import "_adminlte.scss";
-@import "skins/_skin-brown.scss";
-```
+> See theme's README for setup details.
 
 ## Hierapolis 
 Another template found on [github](https://github.com/lab2023/hierapolis) by Lab2023.

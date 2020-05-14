@@ -4,6 +4,7 @@ import { IRootState } from "@/store/index";
 import { GraphQlQuery, GraphQLResult } from "@/plugins/axios-graphql";
 import { AxiosStatic } from "axios";
 
+//== !!!! please check the README.md before editing this module !!!! ==//
 declare module "node_modules/vue/types/options" {
     interface ComponentOptions<V extends Vue> {
         store?: Store<IRootState>;
@@ -19,7 +20,7 @@ declare module 'node_modules/vue/types/vue' {
         * GraphQL Query Fetcher
         * @param query GraphQL query
         */
-        $graphql(query: GraphQlQuery): Promise<GraphQLResult>;
+        $graphql<T = any>(query: GraphQlQuery): Promise<T>; //Promise<GraphQLResult<T>>;
 
         /**Axios HTTP client */
         $http: AxiosStatic;
@@ -33,5 +34,11 @@ declare module 'node_modules/vue/types/vue' {
 
         /**Displays a toast message */
         $toast: ToastConstructor;
+
+        /**Executes box widgets (Collapse/Remove) */
+        $boxWidget(): void;
+
+        /**Builds the menu side out/ins */
+        $menuTree(): void;
     }
 }

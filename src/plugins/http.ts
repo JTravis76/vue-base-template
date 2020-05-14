@@ -6,7 +6,7 @@ import router from "@/router/index";
 export default {
     install(vue: VueConstructor, name = "$http") {
 
-        axios.defaults.baseURL = store.state.config.BaseURL;
+        axios.defaults.baseURL = store.getters.baseURL;
 
         //Display Page Loader on every AJAX request
         axios.interceptors.request.use(config => {

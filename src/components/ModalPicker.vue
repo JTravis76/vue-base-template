@@ -7,13 +7,13 @@
                     <h4 class="modal-title">{{title}}</h4>
                 </div>
                 <div class="modal-body">
-                    <input type="text" class="form-control" placeholder="Search..." v-on:keyup.enter="Search" style="width:100% !important;" />
+                    <input type="text" class="form-control" placeholder="Search..." v-on:keyup.enter="Search" style="width:100% !important;" :data-testid="id.toLowerCase() + '-search'" />
                     <div class="table-responsive" v-bind:style="{height:height}">
                         <table class="table table-striped table-condensed">
                             <tbody v-if="master.length > 0">
-                                <tr v-for="(row, index) in master">
+                                <tr v-for="(row, idx) in master" :key="idx">
                                     <td style="width:30px;">
-                                        <button class="btn btn-xs btn-primary" v-on:click="OnSelection(index)" v-bind:class="[multi && row.selected ? 'btn btn-xs btn-success' : 'btn btn-xs btn-primary']">
+                                        <button class="btn btn-xs btn-primary" v-on:click="OnSelection(idx)" v-bind:class="[multi && row.selected ? 'btn btn-xs btn-success' : 'btn btn-xs btn-primary']">
                                             <i class="fa fa-square-o"></i>
                                         </button>
                                     </td>

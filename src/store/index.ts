@@ -15,7 +15,13 @@ export default new Vuex.Store<IRootState>({
         pageLoading: false,
         httpConnections: 0
     },
-    mutations: {},
+    mutations: {
+        pageloader(state, payload: boolean = true) {
+            state.pageLoading = payload;
+        },
+        addconnection: state => state.httpConnections++,
+        removeconnection: state => state.httpConnections--
+    },
     actions: {}
 });
 

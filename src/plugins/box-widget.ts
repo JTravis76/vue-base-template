@@ -1,4 +1,4 @@
-﻿import { parents } from "@/lib/jquery-native"
+﻿import { find } from "@/lib/traverse";
 
 export default {
     install(vue, name = "$boxWidget") {
@@ -29,7 +29,7 @@ function CollapseBox(): void {
                 btn.classList.toggle("fa-plus");
              } 
 
-            let box = parents(e.target as HTMLElement, ".box");
+            let box = find(e.target as HTMLElement, ".box");
             box.classList.toggle("collapsed-box");
         });
     }
@@ -41,7 +41,7 @@ function RemoveBox(): void {
     for (var i = 0; i < remove.length; i++) {
         remove[i].addEventListener("click", function (e) {
             e.preventDefault();
-            let box = parents(e.target as HTMLElement, ".box");
+            let box = find(e.target as HTMLElement, ".box");
             box.parentNode.removeChild(box);
         });
     }
