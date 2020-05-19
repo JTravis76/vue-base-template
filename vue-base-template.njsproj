@@ -7,7 +7,8 @@
     <RootNamespace>NodejsWebApp1</RootNamespace>
     <LastActiveSolutionConfig>Debug|Any CPU</LastActiveSolutionConfig>
     <SaveNodeJsSettingsInProjectFile>True</SaveNodeJsSettingsInProjectFile>
-    <LaunchUrl>http://localhost/dist</LaunchUrl>
+    <LaunchUrl>
+    </LaunchUrl>
     <NodeExeArguments>
     </NodeExeArguments>
   </PropertyGroup>
@@ -28,9 +29,9 @@
     <NodejsPort>1337</NodejsPort>
     <TypeScriptSourceMap>true</TypeScriptSourceMap>
     <TypeScriptModuleKind>CommonJS</TypeScriptModuleKind>
-    <TypeScriptToolsVersion>3.8</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
     <EnableTypeScript>true</EnableTypeScript>
-    <StartWebBrowser>False</StartWebBrowser>
+    <StartWebBrowser>True</StartWebBrowser>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -42,10 +43,12 @@
     <Folder Include=".vscode\" />
     <Folder Include="dist\" />
     <Folder Include="dist\css\" />
+    <Folder Include="dist\fonts\" />
     <Folder Include="dist\icons\" />
     <Folder Include="dist\img\" />
     <Folder Include="dist\js\" />
     <Folder Include="docs\" />
+    <Folder Include="env\" />
     <Folder Include="src\" />
     <Folder Include="src\assets\" />
     <Folder Include="src\scss\" />
@@ -68,21 +71,20 @@
   <ItemGroup>
     <Content Include=".vscode\applicationhost.config" />
     <Content Include=".vscode\tasks.json" />
+    <Content Include="dist\js\app.development.js" />
+    <Content Include="dist\js\app.local.js" />
+    <Content Include="dist\js\app.production.js" />
+    <Content Include="dist\js\app.staging.js" />
+    <Content Include="env\development.env" />
     <Content Include="dist\css\site.css" />
     <Content Include="dist\css\vue-bundle.css" />
+    <Content Include="dist\favicon.ico" />
     <Content Include="dist\icons\error.svg" />
     <Content Include="dist\icons\info.svg" />
     <Content Include="dist\icons\success.svg" />
     <Content Include="dist\icons\warning.svg" />
     <Content Include="dist\img\logo.png" />
     <Content Include="dist\index.html" />
-    <Content Include="dist\js\app.js" />
-    <Content Include="dist\js\app.js.map" />
-    <Content Include="dist\js\vue-class-component.min.js" />
-    <Content Include="dist\js\vue-router.min.js" />
-    <Content Include="dist\js\vue.js" />
-    <Content Include="dist\js\vue.min.js" />
-    <Content Include="dist\js\vuex.min.js" />
     <Content Include="docs\address-book.md" />
     <Content Include="docs\avatar.md" />
     <Content Include="docs\compose-mail.md" />
@@ -97,12 +99,16 @@
     <Content Include="docs\pagination.md" />
     <Content Include="docs\progress-bar.md" />
     <Content Include="docs\signature-pad.md" />
+    <Content Include="docs\test-id-layout.md" />
     <Content Include="docs\toast-notification.md" />
     <Content Include="docs\user-profile.md" />
     <Content Include="docs\validation-summary.md" />
+    <Content Include="env\production.env" />
+    <Content Include="no-vuex-store.js" />
     <Content Include="package.json" />
     <Content Include="README.md" />
     <Content Include="rollup.config.js" />
+    <Content Include="rollup.config.live.js" />
     <Content Include="server.js" />
     <Content Include="src\App.vue" />
     <Content Include="src\scss\toast-notification\default\index.scss" />
@@ -139,8 +145,8 @@
     <Content Include="src\views\About.vue" />
     <Content Include="src\views\Home.vue" />
     <Content Include="src\views\layout\Menu.vue" />
+    <Content Include="env\staging.env" />
     <Content Include="tsconfig.json" />
-    <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="src\filters.ts" />

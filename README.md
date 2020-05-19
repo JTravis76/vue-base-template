@@ -19,14 +19,30 @@ npm run tsc
 npm run build
 ```
 
-## Vuex Strong Typings:
+## Configuration
+At the heart of most application, is a configuration that allows us to update global values. 
+In this application, `configuration.ts` is a Vuex store module that allows us to change the behavior or provide some form of user's information. 
+Using a Rollup pluging (plugin-replace), can assist in updating those values form different environments. 
+To bundle other environments, create a rollup.config.ENV.js. Set the replace values, then run command.
 
-This project contains a custom Store State interface to assist with strong-typing through-out the entire application.
+> NOTE: replace ENV with the name of your environment
+
+```
+node_modules\.bin\rollup -c rollup.config.ENV.js
+```
+
+## Vuex Strong Typings:
+This project contains a custom Store State interface to assist with strong-typing throughout the entire application.
+To allow Vue to use the our custom Vuex $store types, we must disable the Vuex type.
 
 > **MUST** disable the VUEX typings within the node_modules folder before using.
 
-Navigate to `node_modules/vuex/types/vue.d.ts`. Open and comment out the entire document. Then save and close.
-This will allow Vue to use the our custom Vuex $store types. That file can be modified/updated here: `./typings/app.d.ts`.
+Navigate to `node_modules/vuex/types/vue.d.ts`. Open and comment out the entire document. Then save and close.  
+Or use npm script to clear results
+
+```
+npm run cls-vuex
+```
 
 
 ## Writing Vue Component Modules
@@ -81,7 +97,7 @@ See `src\views\App.vue` or `src\components\About.vue` for full example.
 Needed a place to store custom vue components I've used in many of my projects. Decided this would be the best place. Under the `src\components` directory is a collection of components. Many uses additional libraries, Vuex store, etc. Feel free to use. Documention is provide under the `docs` directory.
 
 ## Contribute
-Feel free to use this for you any use, or provide feedback.
+Feel free to use this template for your next project, or provide feedback.
 
 ## License
 MIT

@@ -1,5 +1,5 @@
 <template>
-    <div id="AddressBookModal" class="modal" role="dialog" v-cloak>
+    <div id="AddressBookModal" class="modal" role="dialog">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -87,9 +87,9 @@
                                             <tbody v-if="selectedlist.length > 0">
                                                 <tr v-for="(row, index) in selectedlist">
                                                     <td><button type="button" class="btn btn-xs btn-danger" title="Remove Member" v-on:click="Remove(index)"><span class="fa fa-remove"></span></button></td>
-                                                    <td>{{row.FullName}}</td>
-                                                    <td>{{row.Email}}</td>
-                                                    <td>{{row.NtUserName}}</td>
+                                                    <td>{{row.fullName}}</td>
+                                                    <td>{{row.email}}</td>
+                                                    <td>{{row.userName}}</td>
                                                 </tr>
                                             </tbody>
                                             <tbody v-else>
@@ -106,7 +106,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-success" v-on:click="Close">Update</button>
-                    <button type="button" class="btn btn-danger" v-on:click="Cancel">Cancel</button>
+                    <button type="button" class="btn btn-default" v-on:click="Cancel">Cancel</button>
                 </div>
             </div>
         </div>
@@ -118,6 +118,7 @@
     import Modal from "modal";
     import { AxiosRequestConfig } from "axios";
     import Pagination from "./Pagination.vue";
+    import { IUserDto } from "typings/application/netcenter";
 
     @Component({
         name: "address-book",
@@ -126,7 +127,7 @@
         }
     })
     export default class AddressBook extends Vue {
-        public activelist: { Email: string, UserName: string, FirstName: string, LastName: string }[] = [];
+        public activelist: IUserDto[] = [];
         public page: number = 1;
         public pagecount: number = 1;
         public pagesize: number = 25;
@@ -134,7 +135,7 @@
         public resultCount: number = 0;
         public loading: boolean = false;
 
-        @Prop({ default: () => { return new Array<GrpMember>(); } }) readonly selectedlist: GrpMember[];
+        @Prop({ default: () => { return new Array<GrpMemberExt>(); } }) readonly selectedlist: GrpMemberExt[];
         @Prop({ default: 0 }) readonly groupId: number;
 
         OnPageChange(e) {
@@ -154,7 +155,7 @@
         Cancel() {
             let list = this.selectedlist;
             for (let idx = (list.length - 1); idx >= 0; idx--) {
-                if (list[idx].IsNew) {
+                if (list[idx].isNew) {
                     list.splice(idx, 1);
                 }
             }
@@ -162,14 +163,13 @@
             this.Close();
         }
         AddMember(idx: number) {
-            let member = new GrpMember();
-            member.GroupId = this.groupId;
-            member.Email = this.activelist[idx].Email;
-            member.FullName = this.activelist[idx].FirstName + " " + this.activelist[idx].LastName;
-            member.UserName = this.activelist[idx].UserName;
-            member.IsNew = true;
-
-            this.selectedlist.push(member);
+            this.selectedlist.push({
+                isNew: true,
+                groupId: this.groupId,
+                email: this.activelist[idx].email,
+                fullName: this.activelist[idx].fullname,
+                userName: this.activelist[idx].ntUsername
+            });
         }
         Remove(idx: number) {
             //this list is reactive back to parent component
@@ -180,33 +180,31 @@
         }
     }
 
-    ///**
-    // * Paginate through the Model's records
-    // * @param vm Vue instance of the component
-    // * @param page page number to fetch
-    // */
-    //function GetData(vm: AddressBook, page: number) {
-    //    let config = {
-    //        url: vm.$store.state.config.NetcenterBaseApi + "Netcenter/Users/SearchUsers",
-    //        method: "GET",
-    //        params: {
-    //            "pageNumber": page,
-    //            "pageSize": vm.pagesize,
-    //            "name": vm.search,
-    //            "deleteMark": 0,
-    //            "sortColumn": "name",
-    //            "sortOrder": "asc"
-    //        }
-    //    } as AxiosRequestConfig;
+    /**
+     * Paginate through the Model's records
+     * @param vm Vue instance of the component
+     * @param page page number to fetch
+     */
+    function GetData(vm: AddressBook, page: number) {
+        let url = vm.$store.state.config.NetcenterBaseApi + "Netcenter/Users/SearchUsers?deleteMark=0&sortColumn=name&sortOrder=asc";
+        url += `&pageNumber=${page}&pageSize=${vm.pagesize}&name=${vm.search}`;
 
-    //    vm.$http(config)
-    //        .then(resp => {
-    //            let d = resp.data;
-    //            vm.activelist = d.users;
-    //            vm.pagecount = d.totalPages;
-    //            vm.resultCount = d.resultCount;
-    //        });
-    //}
+        fetch(url, {
+            method: "GET",
+            cache: "no-cache",
+            credentials: "include",
+            headers: {
+                "content-type": "application/json"
+            }
+        }).then(resp => {
+            if (resp.ok)
+                return resp.json();
+        }).then(data => {
+            vm.activelist = data.users;
+            vm.pagecount = data.totalPages;
+            vm.resultCount = data.resultCount;
+        });
+    }
 
     ///**
     // * Gets data from server
@@ -214,12 +212,13 @@
     // */
     //function GetData(vm: AddressBook, page: number) {
     //    vm.$graphql({
-    //        query: "query Search($p1:Int,$p2:Int,$p3:String){searchUsers(page:$p1,pagesize:$p2,search:$p3){total,pageCount,users{FirstName,LastName,Email,UserName}}}",
+    //        query: "query Search($p1:Int,$p2:Int,$p3:String){searchUsers(page:$p1,pagesize:$p2,search:$p3){total,pageCount,users{fullName,email,userName}}}",
     //        variables: { "p1": page, "p2": vm.pagesize, "p3": vm.search },
     //        operationName: "Search"
     //    }).then(resp => {
-    //        vm.activelist = resp.data.searchUsers.users;
-    //        vm.resultCount = resp.data.searchUsers.total;
+    //        console.log(resp);
+    //        //vm.activelist = resp.data.searchUsers.users;
+    //        //vm.resultCount = resp.data.searchUsers.total;
     //        vm.page = page;
     //    });
     //}
@@ -227,49 +226,49 @@
     /** AddressBook.vue */
     export class Group {
         constructor() {
-            this.GroupId = 0;
-            this.GroupName = "";
-            this.IsDeleted = false;
+            this.id = 0;
+            this.name = "";
+            this.isDeleted = false;
 
-            this.GroupMember = [];
+            this.groupMembers = [];
         }
-        public GroupId?: number;
-        public GroupName?: string;
-        public CreatedBy?: string;
-        public CreatedDate?: string | Date;
-        public UpdatedBy?: string;
-        public UpdatedDate?: string | Date;
-        public IsDeleted?: boolean;
+        public id?: number;
+        public name?: string;
+        public createdBy?: string;
+        public createdDate?: string | Date;
+        public updatedBy?: string;
+        public updatedDate?: string | Date;
+        public isDeleted?: boolean;
 
-        public GroupMember?: GroupMember[];
-    }
+        public groupMembers?: GroupMember[];
+    }    
 
     /** AddressBook.vue */
     export class GroupMember {
         constructor() {
-            this.GroupId = 0;
-            this.UserName = "";
-            this.FullName = "";
-            this.Email = "";
+            this.groupId = 0;
+            this.userName = "";
+            this.fullName = "";
+            this.email = "";
 
-            this.Group = null;
+            this.group = null;
         }
-        public GroupId?: number;
-        public UserName?: string;
-        public FullName?: string;
-        public Email?: string;
+        public groupId?: number;
+        public userName?: string;
+        public fullName?: string;
+        public email?: string;
 
-        public Group?: Group;
+        public group?: Group;
     }
 
     /**Extends the GroupMember class */
-    export class GrpMember extends GroupMember {
+    export class GrpMemberExt extends GroupMember {
         constructor() {
             super();
 
-            this.IsNew = false;
+            this.isNew = false;
         }
-        public IsNew: boolean;
+        public isNew: boolean;
     }
 </script>
 

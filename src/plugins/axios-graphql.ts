@@ -20,7 +20,7 @@ export default {
             if (config.data !== undefined) {
                 //let d = config.data.toString() as string;
                 //if (d.indexOf('??') === -1) {
-                //    store.commit('pageloader', true);
+                    store.commit('pageloader', true);
                 //}
             }
             else {
@@ -48,32 +48,32 @@ export default {
                 if (store.state.httpConnections == 0)
                     store.commit('pageloader', false);
 
-                switch (err.response.status) {
-                    case 400: //Bad Request
-                        //check for GraphQL errors 1st, then assume MVC version
-                        if (err.response.data.errors != undefined) {
-                            //convert GraphQL errors to MVC version
-                            let errors = [];
-                            err.response.data.errors.forEach(e => {
-                                errors.push({ ErrorMessage: e.Message, Execption: null });
-                            });
-                            store.commit("validationSummary/Errors", errors);
-                        }
-                        else
-                            store.commit("validationSummary/Errors", err.response.data);
-                        break;
-                    //case 401: //Unauthorized                        
-                    //    break;
-                    //case 404: //Not Found
-                    //    break;
-                    //case 500: //Internal Server Error
-                    //    break;
-                    default:
-                        store.dispatch("validationSummary/OnError", err)
-                            .then(() => {
-                                router.push({path: "/error"});
-                            });
-                        break;
+                if (err.response !== undefined) {                   
+                    switch (err.response.status) {
+                        case 400: //Bad Request
+                            if (err.response.data.errors != undefined) {
+                                //convert GraphQL errors to MVC version since Validation component requires that format
+                                let errors = [];
+                                err.response.data.errors.forEach(e => {
+                                    errors.push({ ErrorMessage: e.message, Exception: null });
+                                });
+                                
+                                store.commit("validationSummary/Errors", errors);
+                            }
+                            break;
+                        //case 401: //Unauthorized                        
+                        //    break;
+                        //case 404: //Not Found
+                        //    break;
+                        //case 500: //Internal Server Error
+                        //    break;
+                        default:
+                            store.dispatch("validationSummary/OnError", err)
+                                .then(() => {
+                                    router.push({ path: "/error" });
+                                });
+                            break;
+                    }
                 }
 
                 return Promise.reject(err);

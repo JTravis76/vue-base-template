@@ -3,7 +3,7 @@
         <span class="close" @click="ClearValidation" aria-label="close" style="text-decoration:none;">&times;</span>
         {{title}}
         <ul>
-            <li v-for="(row, index) in ErrorMessages" v-bind:key="index">{{row.ErrorMessage}}{{row.Exception}}</li>
+            <li v-for="(row, idx) in ErrorMessages" :key="idx">{{row.ErrorMessage}}{{row.Exception}}</li>
         </ul>
     </div>
 </template>
@@ -14,12 +14,15 @@
     @Component({
         name: "validation-summary"
       })
-      export default class ValidationSummary extends Vue {
-        @Prop({ default: "Please correct the following errors:" }) title: string;
+    export default class ValidationSummary extends Vue {
+        @Prop({ default: "Please correct the following errors:" }) readonly title: string;
 
         get ErrorMessages() {
             if (this.$store.state.validationSummary !== undefined) {
                 return this.$store.state.validationSummary.errors;
+            }
+            else {
+                console.warn("Missing Validation Summary store module");
             }
             return [];
         }
