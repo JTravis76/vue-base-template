@@ -29,7 +29,7 @@
     <NodejsPort>1337</NodejsPort>
     <TypeScriptSourceMap>true</TypeScriptSourceMap>
     <TypeScriptModuleKind>CommonJS</TypeScriptModuleKind>
-    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>3.9</TypeScriptToolsVersion>
     <EnableTypeScript>true</EnableTypeScript>
     <StartWebBrowser>True</StartWebBrowser>
   </PropertyGroup>
@@ -166,6 +166,7 @@
     <TypeScriptCompile Include="src\lib\vue-property-decorator.ts" />
     <TypeScriptCompile Include="src\main.ts" />
     <TypeScriptCompile Include="src\plugins\axios-graphql.ts" />
+    <TypeScriptCompile Include="src\plugins\dialog.ts" />
     <TypeScriptCompile Include="src\plugins\http.ts" />
     <TypeScriptCompile Include="src\plugins\toast-notification.ts" />
     <TypeScriptCompile Include="src\plugins\user-in-role.ts" />

@@ -71,8 +71,9 @@
 
         setupContainer() {
             this.parentTop = document.querySelector('.notices.is-top');
-            this.parentBottom = document.querySelector('.notices.is-bottom'); // No need to create them, they already exists
+            this.parentBottom = document.querySelector('.notices.is-bottom');
 
+            // No need to create them, they already exists
             if (this.parentTop && this.parentBottom) return;
 
             if (!this.parentTop) {
@@ -88,7 +89,7 @@
             let container = this.container || document.body;
             container.appendChild(this.parentTop);
             container.appendChild(this.parentBottom);
-            var containerParentClass = 'is-custom-parent';
+            let containerParentClass = 'is-custom-parent';
 
             if (this.container) {
                 this.parentTop.classList.add(containerParentClass);

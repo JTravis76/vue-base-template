@@ -4,7 +4,7 @@ This template is based on the popular admin dashboard [AdminLTE](https://github.
 > NOTE: this theme uses Bootstrap 3.4.1
 
 ```
-npm i awesome-bootstrap-checkbox@1.0.1 axios@0.19.2 bootstrap-sass@3.4.1 bootstrap.native@2.0.27 font-awesome@4.7.0
+npm i awesome-bootstrap-checkbox@0.3.7 axios@0.19.2 bootstrap-sass@3.4.1 bootstrap.native@2.0.27 font-awesome@4.7.0
 ```
 
 * Copy layout from `themes\adminlte\layout` to `src\view\layout`

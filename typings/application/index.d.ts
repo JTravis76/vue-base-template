@@ -3,6 +3,7 @@ import { Store } from "vuex/types/index";
 import { IRootState } from "@/store/index";
 import { GraphQlQuery, GraphQLResult } from "@/plugins/axios-graphql";
 import { AxiosStatic } from "axios";
+import { DialogOptions } from "@/plugins/dialog";
 
 //== !!!! please check the README.md before editing this module !!!! ==//
 declare module "node_modules/vue/types/options" {
@@ -40,5 +41,8 @@ declare module 'node_modules/vue/types/vue' {
 
         /**Builds the menu side out/ins */
         $menuTree(): void;
+
+        /**Displays a dialog */
+        $dialog(options: string | DialogOptions): Promise<any>;
     }
 }
