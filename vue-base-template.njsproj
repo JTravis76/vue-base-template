@@ -75,9 +75,9 @@
     <Content Include="dist\js\app.local.js" />
     <Content Include="dist\js\app.production.js" />
     <Content Include="dist\js\app.staging.js" />
+    <Content Include="dist\js\need-polyfill.js" />
     <Content Include="env\development.env" />
     <Content Include="dist\css\site.css" />
-    <Content Include="dist\css\vue-bundle.css" />
     <Content Include="dist\favicon.ico" />
     <Content Include="dist\icons\error.svg" />
     <Content Include="dist\icons\info.svg" />
@@ -111,6 +111,8 @@
     <Content Include="rollup.config.live.js" />
     <Content Include="server.js" />
     <Content Include="src\App.vue" />
+    <Content Include="src\components\bootstrap-markdown.vue" />
+    <Content Include="src\components\TestIdLayout.vue" />
     <Content Include="src\scss\toast-notification\default\index.scss" />
     <Content Include="src\scss\toast-notification\default\_main.scss" />
     <Content Include="src\scss\toast-notification\default\_variables.scss" />
@@ -151,6 +153,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="src\filters.ts" />
     <TypeScriptCompile Include="src\lib\bezier.ts" />
+    <TypeScriptCompile Include="src\lib\browser-version.ts" />
     <TypeScriptCompile Include="src\lib\dataset.ts" />
     <TypeScriptCompile Include="src\lib\event-bus.ts" />
     <TypeScriptCompile Include="src\lib\generate-ids.ts" />
@@ -166,8 +169,10 @@
     <TypeScriptCompile Include="src\lib\vue-property-decorator.ts" />
     <TypeScriptCompile Include="src\main.ts" />
     <TypeScriptCompile Include="src\plugins\axios-graphql.ts" />
+    <TypeScriptCompile Include="src\plugins\box-widget.ts" />
     <TypeScriptCompile Include="src\plugins\dialog.ts" />
     <TypeScriptCompile Include="src\plugins\http.ts" />
+    <TypeScriptCompile Include="src\plugins\menu-tree.ts" />
     <TypeScriptCompile Include="src\plugins\toast-notification.ts" />
     <TypeScriptCompile Include="src\plugins\user-in-role.ts" />
     <TypeScriptCompile Include="src\router\index.ts" />

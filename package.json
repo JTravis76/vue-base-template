@@ -24,7 +24,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "cls-vuex": "node no-vuex-store.js",
-    "tsc": "tsc --build",
+    "tsc": "npm run cls-vuex && tsc --build",
     "build": "npm run tsc && rollup -c --environment ASPNETCORE_ENVIRONMENT:Local",
     "watch": "rollup -c rollup.config.live.js --watch",
     "serve": "node server.js"

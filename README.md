@@ -2,7 +2,8 @@
 Basic template for building VueJS web app with Typescript.
 
 ## Why?
-Basically, I feel that many other front-end projects rely on so many different tools to get a simple job done. Goal here is reduce the over-head to the necessary tools to develop and bundle an application using the things I love; `ES6 modules`, `Typescript`, `Vue JS`, and `Rollup JS`.
+Basically, I feel that many other front-end projects rely on so many different tools to get a simple job done. Goal here is reduce the over-head to the 
+necessary tools to develop and bundle an application using the things I love; `ES6 modules`, `Typescript`, `Vue JS`, and `Rollup JS`.
 
 ## Installation & Setup
 
@@ -11,6 +12,8 @@ Basically, I feel that many other front-end projects rely on so many different t
 ```
 :: installs application dependencies
 npm install
+:: or to install from package.lock.json
+npm ci
 
 :: runs all TS code through Typescript
 npm run tsc
@@ -60,7 +63,7 @@ See `src\views\not-found.ts` for full example.
 * CONs
     * template embeded into string literal
         * string can be parse into HTML via extension
-    * Weak strong typings withpit cast objects and use Interfaces
+    * Weak strong typings without casting objects and using Interfaces
     * All styles must either in-line or in a global CSS file
 
 *Vue Component via Standard Vue Mixin*  
@@ -74,7 +77,7 @@ See `src\views\Home.vue` or `src\components\Avatar.vue` for full example.
     * Easying edit template as HTML code
 * CONs
     * Must convert Vue's single component to TS equivalent
-    * Weak strong typings without cast objects and use Interfaces
+    * Weak strong typings without casting objects and using Interfaces
     * Sourcemap line index is out-of-sync in debugger
 
 *Vue Component via Vue-Property-Decorator*  
@@ -90,11 +93,12 @@ See `src\views\App.vue` or `src\components\About.vue` for full example.
     * No need for extra interfaces to cast Vue's objects.
 * CONs
     * Must convert Vue's single component to TS equivalent
-    * Bundle or reference external Javascript library
+    * Bundle or reference additional external Javascript library
     * Sourcemap line index is out-of-sync in debugger
 
 ## Custom Vue Components
-Needed a place to store custom vue components I've used in many of my projects. Decided this would be the best place. Under the `src\components` directory is a collection of components. Many uses additional libraries, Vuex store, etc. Feel free to use. Documention is provide under the `docs` directory.
+Needed a place to store custom vue components I've used in many of my projects. Decided this would be the best place. Under the `src\components` directory 
+is a collection of components. Many uses additional libraries, Vuex store, etc. Feel free to use. Documention for each component is provide under the `docs` directory.
 
 ## Contribute
 Feel free to use this template for your next project, or provide feedback.
