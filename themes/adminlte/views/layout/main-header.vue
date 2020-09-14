@@ -6,7 +6,7 @@
             </span>
             <span class="logo-lg">
                 <img alt="logo" src="./img/logo.png" style="height:40px;" />
-                <b>WISE</b>
+                <b>AdminLTE</b>
             </span>
         </router-link>
         <!-- Header Navbar -->
@@ -24,8 +24,8 @@
                     <nav-profile></nav-profile>
                     <!-- Control Sidebar Toggle Button -->
                     <li>
-                        <a><!--placeholder--></a>
-                        <!--<a href="#" data-toggle="control-sidebar" v-on:click.prevent="ToggleSidebar"><i class="fa fa-gears"></i></a>-->
+                        <!-- <a>placeholder when commenting the below archor tag (sidebar)</a> -->
+                        <a href="#" data-toggle="control-sidebar" v-on:click.prevent="ToggleSidebar"><i class="fa fa-gears"></i></a>
                     </li>
                 </ul>
             </div>

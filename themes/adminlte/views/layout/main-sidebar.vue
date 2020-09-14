@@ -20,7 +20,7 @@
                         <router-link tag="li" to="/settings"><a><i class="fa fa-circle-o"></i><span>Configurations</span></a></router-link>
                         <router-link tag="li" to="/emailgroups"><a><i class="fa fa-circle-o"></i><span>Email Groups</span></a></router-link>
                         <li class="divider"></li>
-                        <router-link tag="li" to="/onlineuser"><a><i class="fa fa-circle-o"></i><span>Who's Online</span></a></router-link>
+                        <router-link tag="li" to="/onlineusers"><a><i class="fa fa-circle-o"></i><span>Who's Online</span></a></router-link>
                     </ul>
                 </li>
                 <router-link tag="li" to="/ncmanager" v-if="$UserInRole(['NCManager'])"><a><i class="fa fa-users"></i><span>NC Manager</span></a></router-link>

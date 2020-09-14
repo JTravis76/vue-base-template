@@ -52,8 +52,8 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody v-if="activelist.length > 0">
-                                                    <tr v-for="(row, index) in activelist">
-                                                        <td><button type="button" class="btn btn-xs btn-primary" title="Add Member" v-on:click="AddMember(index)"><span class="fa fa-user-plus"></span></button></td>
+                                                    <tr v-for="(row, idx) in activelist" :key=idx>
+                                                        <td><button type="button" class="btn btn-xs btn-primary" title="Add Member" v-on:click="AddMember(idx)"><span class="fa fa-user-plus"></span></button></td>
                                                         <td>{{row.fullname}}</td>
                                                         <td>{{row.email}}</td>
                                                         <td>{{row.ntUsername}}</td>
@@ -85,8 +85,8 @@
                                                 </tr>
                                             </thead>
                                             <tbody v-if="selectedlist.length > 0">
-                                                <tr v-for="(row, index) in selectedlist">
-                                                    <td><button type="button" class="btn btn-xs btn-danger" title="Remove Member" v-on:click="Remove(index)"><span class="fa fa-remove"></span></button></td>
+                                                <tr v-for="(row, idx) in selectedlist" :key="idx">
+                                                    <td><button type="button" class="btn btn-xs btn-danger" title="Remove Member" v-on:click="Remove(idx)"><span class="fa fa-remove"></span></button></td>
                                                     <td>{{row.fullName}}</td>
                                                     <td>{{row.email}}</td>
                                                     <td>{{row.userName}}</td>
@@ -186,29 +186,34 @@
      * @param page page number to fetch
      */
     function GetData(vm: AddressBook, page: number) {
-        let url = vm.$store.state.config.NetcenterBaseApi + "Netcenter/Users/SearchUsers?deleteMark=0&sortColumn=name&sortOrder=asc";
-        url += `&pageNumber=${page}&pageSize=${vm.pagesize}&name=${vm.search}`;
+        // let url = vm.$store.state.config.NetcenterApi + "Netcenter/Users/SearchUsers?deleteMark=0&sortColumn=name&sortOrder=asc";
+        // url += `&pageNumber=${page}&pageSize=${vm.pagesize}&name=${vm.search}`;
 
-        fetch(url, {
-            method: "GET",
-            cache: "no-cache",
-            credentials: "include",
-            headers: {
-                "content-type": "application/json"
-            }
-        }).then(resp => {
-            if (resp.ok)
-                return resp.json();
-        }).then(data => {
-            vm.activelist = data.users;
-            vm.pagecount = data.totalPages;
-            vm.resultCount = data.resultCount;
-        });
+        // fetch(url, {
+        //     method: "GET",
+        //     cache: "no-cache",
+        //     credentials: "include",
+        //     headers: {
+        //         "content-type": "application/json"
+        //     }
+        // }).then(resp => {
+        //     if (resp.ok)
+        //         return resp.json();
+        // }).then(data => {
+        //     vm.activelist = data.users;
+        //     vm.pagecount = data.totalPages;
+        //     vm.resultCount = data.resultCount;
+        // });
+
+        vm.activelist = vm.$store.state.fakeData.addressBook.users;
+        vm.pagecount = vm.$store.state.fakeData.addressBook.totalPages;
+        vm.resultCount = vm.$store.state.fakeData.addressBook.resultCount;
     }
 
     ///**
     // * Gets data from server
     // * @param vm AddressBook - vue instance
+    // * @param page page number to fetch
     // */
     //function GetData(vm: AddressBook, page: number) {
     //    vm.$graphql({

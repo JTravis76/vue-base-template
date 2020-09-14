@@ -63,7 +63,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label text-info">NT Username</label>
+                            <label class="control-label text-info">Username</label>
                             <div>
                                 <input type="text" class="form-control" disabled="disabled" v-bind:value="$store.state.profile.user.NtUsername" />
                             </div>

@@ -34,6 +34,10 @@ To bundle other environments, create a rollup.config.ENV.js. Set the replace val
 node_modules\.bin\rollup -c rollup.config.ENV.js
 ```
 
+Another option would be to use the environment variable `ASPNETCORE_ENVIRONMENT` to toggle the various builds; Development, Staging, Production.
+
+> NOTE: local is default
+
 ## Vuex Strong Typings:
 This project contains a custom Store State interface to assist with strong-typing throughout the entire application.
 To allow Vue to use the our custom Vuex $store types, we must disable the Vuex type.
@@ -99,6 +103,15 @@ See `src\views\App.vue` or `src\components\About.vue` for full example.
 ## Custom Vue Components
 Needed a place to store custom vue components I've used in many of my projects. Decided this would be the best place. Under the `src\components` directory 
 is a collection of components. Many uses additional libraries, Vuex store, etc. Feel free to use. Documention for each component is provide under the `docs` directory.
+
+## Template CLI
+A DENO script to apply various templates I used in some of my projects.
+
+> Sorry, attempted this is Node, but getting permission errors.
+
+```
+deno run --unstable --allow-write --allow-read --allow-run template-cli.ts
+```
 
 ## Contribute
 Feel free to use this template for your next project, or provide feedback.

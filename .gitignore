@@ -1,6 +1,7 @@
 ## My custom build files
 dist/css/*.css
 dist/css/*.css.map
+dist/js/app.js
 dist/js/app.*.js
 dist/js/app.js.map
 

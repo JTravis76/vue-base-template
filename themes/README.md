@@ -2,7 +2,20 @@
 
 Here are a few themes converted to use VueJs that was used in some of my projects.
 
-> See theme's README for setup details.
+## Template CLI
+This tool will apply the selected themes. To install templates, run the following DENO script.
+
+> Sorry, attempted this is Node, but getting permission errors.
+
+```
+deno run --unstable --allow-write --allow-read --allow-run template-cli.ts
+```
+
+## AdminLTE
+This template is based on the popular admin dashboard [AdminLTE](https://github.com/ColorlibHQ/AdminLTE).
+
+> NOTE: this theme uses Bootstrap 3.4.1
+
 
 ## Hierapolis 
 Another template found on [github](https://github.com/lab2023/hierapolis) by Lab2023.

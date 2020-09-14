@@ -12,7 +12,7 @@
                 </p>
             </li>
             <!-- Menu Body -->
-            <!--<li class="user-body">
+            <li class="user-body">
                 <div class="row">
                     <div class="col-xs-4 text-center">
                         <a href="#">Followers</a>
@@ -24,15 +24,14 @@
                         <a href="#">Friends</a>
                     </div>
                 </div>
-            </li>-->
+            </li>
             <!-- Menu Footer-->
             <li class="user-footer">
                 <div class="pull-left">
                     <router-link to="/userprofile" class="btn btn-default btn-flat">Profile</router-link>
                 </div>
                 <div class="pull-right">
-                    <a><!--placeholder--></a>
-                    <!--<a href="#" class="btn btn-default btn-flat">Sign out</a>-->
+                    <a href="#" class="btn btn-default btn-flat">Sign out</a>
                 </div>
             </li>
         </ul>
@@ -48,21 +47,21 @@
         name: "nav-profile",
         components: {
             Avatar
-        },
-        computed: {
-            Fullname() {
-                let vm = this as NavProfile;
-                if (vm.$store.state.profile.user != undefined) {
-                    return vm.$store.state.profile.user.Fullname;
-                }
-                return "";
+        }
+    })
+    export default class NavProfile extends Vue { 
+
+        get Fullname() {
+            if (this.$store.state.profile.user != undefined) {
+                return this.$store.state.profile.user.Fullname;
             }
-        },
+            return "";
+        }
+
         mounted() {
             BSN.initCallback();
         }
-    })
-    export default class NavProfile extends Vue { }
+    }
 </script>
 
 <style lang="scss"></style>
