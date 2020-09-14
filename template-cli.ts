@@ -7,11 +7,15 @@ import * as fs from "https://deno.land/std@0.68.0/fs/mod.ts";
 
 if (Deno.version.deno !== "1.3.3") console.log(`[WARN] Your DENO version ${Deno.version.deno} may not be supported. Supported version is: 1.3.3.`);
 
-console.log("\n==== Template-CLI ver. 0.1.0 ====");
+console.log("\n==== Template-CLI ver. 0.2.0 ====");
 console.log("\nAvailable Templates:");
 console.log("\n1. AdminLTE");
-//console.log("2. ");
+console.log("2. Hierapolis");
 console.log("\n");
+
+let args = "";
+let p = null;
+let status = null;
 
 new Ask({prefix: ">"}).input({
     name: "template",
@@ -43,13 +47,41 @@ new Ask({prefix: ">"}).input({
             await fs.copy("./themes/adminlte/index.html", "./dist/index.html", { overwrite: true });
 
             console.log("Adding packages...");
-            let args = "cmd /c npm i awesome-bootstrap-checkbox@0.3.7 axios@0.19.2 bootstrap-sass@3.4.1 bootstrap.native@2.0.27 font-awesome@4.7.0";
-            let p = Deno.run({ cmd: args.split(" "), stdout: "piped", stderr: "piped" });
-            let status = await p.status();
+            args = "cmd /c npm i awesome-bootstrap-checkbox@0.3.7 axios@0.19.2 bootstrap-sass@3.4.1 bootstrap.native@2.0.27 font-awesome@4.7.0";
+            p = Deno.run({ cmd: args.split(" "), stdout: "piped", stderr: "piped" });
+            status = await p.status();
             p.stdout?.close();
             p.stderr?.close();
             p.close();
             
+            await Deno.mkdir("./dist/fonts");
+            await fs.copy("./node_modules/font-awesome/fonts", "./dist/fonts", { overwrite: true });
+            await fs.copy("./node_modules/bootstrap-sass/assets/fonts", "./dist/fonts", { overwrite: true });
+
+            break;
+        case 2:
+            console.log("\nScaffolding Hierapolis...");
+
+            await Deno.remove("./src/views/layout", { recursive: true });
+            await Deno.mkdir("./src/views/layout");
+            await fs.copy("./themes/hierapolis/layout", "./src/views/layout", { overwrite: true });
+
+            await fs.copy("./themes/hierapolis/scss", "./src/scss", { overwrite: true });
+            await fs.copy("./themes/hierapolis/App.vue", "./src/App.vue", { overwrite: true });
+            await fs.copy("./themes/hierapolis/main.ts", "./src/main.ts", { overwrite: true });
+
+            console.log("Adding packages...");
+            args = "cmd /c npm i bootstrap-sass@3.4.1 bootstrap.native@2.0.27 font-awesome@4.7.0";
+            p = Deno.run({ cmd: args.split(" "), stdout: "piped", stderr: "piped" });
+            status = await p.status();
+            p.stdout?.close();
+            p.stderr?.close();
+            p.close();
+
+            await fs.copy("./themes/hierapolis/img", "./dist/img", { overwrite: true });
+            await fs.copy("./themes/hierapolis/bootstrap-native.js", "./dist/js/bootstrap-native.js", { overwrite: true });
+            await fs.copy("./themes/hierapolis/index.html", "./dist/index.html", { overwrite: true });
+
             await Deno.mkdir("./dist/fonts");
             await fs.copy("./node_modules/font-awesome/fonts", "./dist/fonts", { overwrite: true });
             await fs.copy("./node_modules/bootstrap-sass/assets/fonts", "./dist/fonts", { overwrite: true });
