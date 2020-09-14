@@ -1,3 +1,4 @@
+import { ComponentOptions } from "vue";
 
 export default {
     name: "main-sidebar",
@@ -21,4 +22,4 @@ export default {
     updated() {
         BSN.initCallback();
     }
-} as ComponentOption
+} as ComponentOptions<any>

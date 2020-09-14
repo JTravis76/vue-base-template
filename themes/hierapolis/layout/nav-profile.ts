@@ -1,4 +1,5 @@
-import Avatar from "../components/Avatar"
+import { ComponentOptions } from "vue";
+import Avatar from "@/components/avatar.vue";
 
 export default {
     name: "nav-profile",
@@ -14,4 +15,4 @@ export default {
             return "";
         }
     }
-} as ComponentOption
+} as ComponentOptions<any>

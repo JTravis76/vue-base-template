@@ -1,5 +1,6 @@
-import NavProfile from "./NavProfile"
-import NavMessage from "./NavMessage"
+import { ComponentOptions } from "vue";
+import NavProfile from "./nav-profile";
+import NavMessage from "./nav-message";
 
 export default {
     name: "nav-bar",
@@ -13,4 +14,4 @@ export default {
     mounted() {
         BSN.initCallback();
     }
-} as ComponentOption
+} as ComponentOptions<any>

@@ -1,3 +1,4 @@
+import { ComponentOptions } from "vue";
 
 export default {
     name: "bread-crumbs",
@@ -8,4 +9,4 @@ export default {
             return this.$route.matched[0];
         }
     }
-} as ComponentOption
+} as ComponentOptions<any>

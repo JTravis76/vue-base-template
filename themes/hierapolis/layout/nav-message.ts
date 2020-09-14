@@ -1,3 +1,4 @@
+import { ComponentOptions } from "vue";
 
 export default {
     name: "nav-mailbox",
@@ -6,4 +7,4 @@ export default {
     data() {
         return {}
     }
-} as ComponentOption
+} as ComponentOptions<any>

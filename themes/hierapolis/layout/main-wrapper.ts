@@ -1,6 +1,7 @@
-import MainSidebar from "./MainSidebar"
-import BreadCrumb from "./Breadcrumb"
-//import Toolbar from "./Toolbar"
+import { ComponentOptions } from "vue";
+import MainSidebar from "./main-sidebar";
+import BreadCrumb from "./breadcrumb";
+//import Toolbar from "./toolbar";
 
 export default {
     name: "main-wrapper",
@@ -13,4 +14,4 @@ export default {
     data() {
         return {}
     }
-} as ComponentOption
+} as ComponentOptions<any>
