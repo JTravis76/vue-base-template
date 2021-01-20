@@ -4,7 +4,7 @@
   "description": "Boilplate web application for VueJS with Typescript support",
   "main": "src/main.ts",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "vue": "^2.6.11",
     "vue-class-component": "^7.2.3",
     "vue-router": "^3.1.6",
