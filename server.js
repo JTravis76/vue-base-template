@@ -1,26 +1,26 @@
 ﻿const http = require('http');
 const fs = require('fs');
 const port = process.env.port || 1337;
-console.log("Starting server on port " + port);
+console.log(`Server listening on http://localhost:${port}/`);
 
 var redirectPage = '<!DOCTYPE html><html><head><meta charset="utf-8" /><meta http-equiv="refresh" content="0; url=./dist/" /><title></title></head><body></body></html>';
 
 const MEDIA_TYPES = {
-    ".md": "text/markdown",
-    ".html": "text/html",
-    ".htm": "text/html",
-    ".txt": "text/plain",
-    ".css": "text/css",
-    ".ico": "image/ico",
-    ".gif": "image/gif",
-    ".jpg": "image/jpg",
-    ".png": "image/png",
-    ".json": "application/json",
-    ".map": "application/json",
-    ".js": "application/javascript",
-    ".mjs": "application/javascript",
-    ".woff": "font/woff",
-    ".woff2": "font/woff2"
+    "md": "text/markdown",
+    "html": "text/html",
+    "htm": "text/html",
+    "txt": "text/plain",
+    "css": "text/css",
+    "ico": "image/ico",
+    "gif": "image/gif",
+    "jpg": "image/jpg",
+    "png": "image/png",
+    "json": "application/json",
+    "map": "application/json",
+    "js": "application/javascript",
+    "mjs": "application/javascript",
+    "woff": "font/woff",
+    "woff2": "font/woff2"
 }
 
 http.createServer(function (req, res) {
@@ -28,7 +28,7 @@ http.createServer(function (req, res) {
 
     //when empty, redirect
     if (req.url === "/") {
-        res.writeHead(200, { 'Content-Type': 'text/html' });
+        res.writeHead(200, { 'Content-Type': MEDIA_TYPES["html"] });
         res.write(redirectPage);
         return res.end();
     }
@@ -36,24 +36,25 @@ http.createServer(function (req, res) {
     let url = req.url;
     let ext = "";
 
-    //remove any params
+    // Remove any params from query string
     if (url.indexOf("?") > -1) {
         url = url.substr(0, url.indexOf("?"));
     }
 
+    // Fetch root default document, favicon, or any other files
     if (req.url.endsWith("/")) {
         url = `${req.url}index.html`;
-        ext = ".html";
+        ext = "html";
     }
     else if (req.url === "/favicon.ico") {
         //Chrome browser asking for icon
         url = `/dist${req.url}`;
-        ext = ".ico";
+        ext = "ico";
     }
     else if (url.lastIndexOf(".") > -1) {
         let s = url.split(".");
         if (s.length > 0 ) {
-            ext = `.${s[s.length - 1]}`;
+            ext = s[s.length - 1];
         }
     }
 
@@ -68,7 +69,7 @@ http.createServer(function (req, res) {
             fs.readFile(url, function(err, data) {
                 if (err !== null) {
                     res.writeHead(500);
-                    //res.write();
+                    res.write(err.message);
                     return res.end();
                 }
 

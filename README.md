@@ -2,8 +2,8 @@
 Basic template for building VueJS web app with Typescript.
 
 ## Why?
-Basically, I feel that many other front-end projects rely on so many different tools to get a simple job done. Goal here is reduce the over-head to the 
-necessary tools to develop and bundle an application using the things I love; `ES6 modules`, `Typescript`, `Vue JS`, and `Rollup JS`.
+Basically, I feel that many other front-end projects rely on so many different tools to get a simple job done.
+The goal here is reduce the over-head to the necessary tools to develop and bundle an application using the things I love; `ES6 modules`, `Typescript`, `Vue JS`, and `Rollup JS`.
 
 ## Installation & Setup
 
@@ -25,24 +25,25 @@ npm run build
 ## Configuration
 At the heart of most application, is a configuration that allows us to update global values. 
 In this application, `configuration.ts` is a Vuex store module that allows us to change the behavior or provide some form of user's information. 
-Using a Rollup pluging (plugin-replace), can assist in updating those values form different environments. 
+Using this Rollup plugin's (plugin-replace), can assist in updating those values for different environments. 
 To bundle other environments, create a rollup.config.ENV.js. Set the replace values, then run command.
 
 > NOTE: replace ENV with the name of your environment
 
 ```
-node_modules\.bin\rollup -c rollup.config.ENV.js
+node_modules\.bin\rollup -c rollup.config.{ENV}.js
 ```
 
-Another option would be to use the environment variable `ASPNETCORE_ENVIRONMENT` to toggle the various builds; Development, Staging, Production.
+Another option would be to use the environment variable `ASPNETCORE_ENVIRONMENT` to toggle the various builds; Development, Staging, Production. This environment variable is used within Microsoft's .NET Core applications. 
+Just reused, since I develop in both.
 
 > NOTE: local is default
 
 ## Vuex Strong Typings:
 This project contains a custom Store State interface to assist with strong-typing throughout the entire application.
-To allow Vue to use the our custom Vuex $store types, we must disable the Vuex type.
+To allow Vue to use the our custom Vuex $store types, we must disable the default version within Vuex NPM package.
 
-> **MUST** disable the VUEX typings within the node_modules folder before using.
+> **MUST** disable the VUEX typings within the node_modules folder before using the custom store typings.
 
 Navigate to `node_modules/vuex/types/vue.d.ts`. Open and comment out the entire document. Then save and close.  
 Or use npm script to clear results
@@ -78,7 +79,7 @@ See `src\views\Home.vue` or `src\components\Avatar.vue` for full example.
 
 * PROs
     * Uses Vue's single component file
-    * Easying edit template as HTML code
+    * Easing edit template as HTML code
 * CONs
     * Must convert Vue's single component to TS equivalent
     * Weak strong typings without casting objects and using Interfaces
@@ -101,17 +102,18 @@ See `src\views\App.vue` or `src\components\About.vue` for full example.
     * Sourcemap line index is out-of-sync in debugger
 
 ## Custom Vue Components
-Needed a place to store custom vue components I've used in many of my projects. Decided this would be the best place. Under the `src\components` directory 
-is a collection of components. Many uses additional libraries, Vuex store, etc. Feel free to use. Documention for each component is provide under the `docs` directory.
+I needed a place to store some custom vue components created in many of my projects. Decided this would be the best place. Under the `src\components` directory is a collection of components. Many uses additional libraries, Vuex store, etc. Feel free to use. Documentation for each component is provide under the `docs` directory.
 
 ## Template CLI
-A DENO script to apply various templates I used in some of my projects.
-
-> Sorry, attempted this is Node, but getting permission errors.
+A [DENO](https://deno.land) script to apply various templates I used in some of my projects.
 
 ```
 deno run --unstable --allow-write --allow-read --allow-run template-cli.ts
 ```
+
+## Change Log
+2021-03-24: Updated to the latest npm packages. Fixed a few things related to those updates.
+
 
 ## Contribute
 Feel free to use this template for your next project, or provide feedback.

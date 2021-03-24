@@ -1,4 +1,4 @@
-import resolve from "./node_modules/@rollup/plugin-node-resolve/dist/index.es";
+import resolve from "./node_modules/@rollup/plugin-node-resolve/dist/es/index.js";
 import replace from "./node_modules/@rollup/plugin-replace/dist/rollup-plugin-replace.es";
 import vue from "./node_modules/rollup-plugin-ts-vue/dist/rollup-plugin-ts-vue.es";
 import dev from "./env/development.env";
@@ -37,7 +37,7 @@ export default ["local", "development", "staging", "production"].map((name, inde
     },
     plugins: [
         resolve(),
-        replace(env(name)),
+        replace({ preventAssignment: true }, env(name)),
         vue(null, {
             output: "./dist/css/site.css",
             includePaths: ["src/scss"]

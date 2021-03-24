@@ -5,26 +5,26 @@
   "main": "src/main.ts",
   "dependencies": {
     "axios": "^0.21.1",
-    "vue": "^2.6.11",
-    "vue-class-component": "^7.2.3",
-    "vue-router": "^3.1.6",
-    "vuex": "^3.4.0"
+    "vue": "^2.6.12",
+    "vue-class-component": "^7.2.6",
+    "vue-router": "^3.5.1",
+    "vuex": "^3.6.2"
   },
   "devDependencies": {
-    "@rollup/plugin-node-resolve": "^7.1.3",
-    "@rollup/plugin-replace": "^2.3.2",
-    "rollup": "^2.10.0",
-    "rollup-plugin-livereload": "^1.3.0",
+    "@rollup/plugin-node-resolve": "^11.2.0",
+    "@rollup/plugin-replace": "^2.4.1",
+    "rollup": "^2.42.3",
+    "rollup-plugin-livereload": "^2.0.0",
     "rollup-plugin-ts-vue": "^0.5.0",
-    "sass": "^1.26.5",
-    "tslib": "^2.0.0",
-    "typescript": "^3.9.2",
-    "vue-property-decorator": "^8.4.2"
+    "sass": "^1.32.8",
+    "tslib": "^2.1.0",
+    "typescript": "^4.2.3",
+    "vue-property-decorator": "^8.5.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "cls-vuex": "node no-vuex-store.js",
-    "tsc": "npm run cls-vuex && tsc --build",
+    "tsc": "npm run tsc --build",
     "build": "npm run tsc && rollup -c --environment ASPNETCORE_ENVIRONMENT:Local",
     "watch": "rollup -c rollup.config.live.js --watch",
     "serve": "node server.js"

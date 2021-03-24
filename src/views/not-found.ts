@@ -9,11 +9,17 @@ export default {
         }
     },
     created() {
-        let vm = this as VueComp;
+        /* NOTE: `this` keyword is not strong-typed. 
+        * Can enable strong-typing by editing the vue.d.ts definition.
+        * Browse to "node_modules/vue/types/vue.d.ts" line number 89
+        * replace text with; created?(this: V): void;
+        * then reload vscode
+        */
+        let vm = this as NotFound;
         vm.logo = "./img/logo.png";
     }
-} as ComponentOptions<any>
+} as ComponentOptions<NotFound>
 
-interface VueComp extends Vue {
+interface NotFound extends Vue {
     logo: string;
 }

@@ -6,13 +6,13 @@ import { AxiosStatic } from "axios";
 import { DialogOptions } from "@/plugins/dialog";
 
 //== !!!! please check the README.md before editing this module !!!! ==//
-declare module "node_modules/vue/types/options" {
+declare module "vue/types/options" {
     interface ComponentOptions<V extends Vue> {
         store?: Store<IRootState>;
     }
 }
 
-declare module 'node_modules/vue/types/vue' {
+declare module 'vue/types/vue' {
     interface Vue {
         /**Application Root Store */
         $store: Store<IRootState>;
